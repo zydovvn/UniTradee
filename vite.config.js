@@ -3,10 +3,13 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    host: true, // cho phép truy cập từ mạng ngoài
-    allowedHosts: [
-      "cinderlike-unduteously-korey.ngrok-free.dev", // host ngrok của bạn
-    ],
-  },
+  // nói rõ nơi xuất file build
+  build: { outDir: "dist" },
+
+  // (tùy chọn) nếu bạn chỉ dùng cho dev local thì giữ block server,
+  // còn deploy Railway không cần:
+  // server: {
+  //   host: true,
+  //   allowedHosts: ["cinderlike-unduteously-korey.ngrok-free.dev"],
+  // },
 });
