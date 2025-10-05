@@ -12,4 +12,14 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
+// Kiểm tra kết nối cơ sở dữ liệu
+pool.connect()
+  .then(client => {
+    console.log("✅ Kết nối cơ sở dữ liệu thành công.");
+    client.release(); // Trả connection về pool
+  })
+  .catch(err => {
+    console.error("❌ Không thể kết nối cơ sở dữ liệu:", err.message);
+  });
+
 export default pool;
